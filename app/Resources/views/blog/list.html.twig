@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for post in posts %}
+        <article>
+            <h1>{{ post.title }}</h1>
+            <time>{{ post.publishDate|date('d-m-y') }}</time>
+
+            <p>{{ post.content }}</p>
+        </article>
+    {% endfor %}
+
+{% endblock %}
