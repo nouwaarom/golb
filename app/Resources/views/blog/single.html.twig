@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <article>
+        <h1>{{ post.title }}</h1>
+        <time>{{ post.publishDate|date('d-m-y') }}</time>
+
+        {{ post.content|raw }}
+    </article>
+
+{% endblock %}
