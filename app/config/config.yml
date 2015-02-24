@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -72,6 +72,13 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+sonata_admin:
+    dashboard:
+        groups:
+            blog_post:
+                label: Blog Post
+                items:
+                    - app.admin.blog_post
 
 # Sonata Block Configuration
 sonata_block:

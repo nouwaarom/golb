@@ -16,6 +16,9 @@
     float:right;
 }
     .page__nav li{
+        margin:0 10px;
+        float:left;
+
         list-style:none;
     }
     .page__nav a{
