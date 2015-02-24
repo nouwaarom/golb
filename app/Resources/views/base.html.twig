@@ -19,7 +19,15 @@
                 <nav class=page__nav>
                     <ul>
                         <li><a href="{{ path('homepage') }}">Home</a></li>
+                        {% if is_granted('ROLE_SONATA_ADMIN') %}
                         <li><a href="{{ path('sonata_admin_dashboard') }}">Admin</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                        <li><a href="#">Add Post</a></li>
+                        <li><a href="{{ path('logout') }}">Log Out</a></li>
+                        {% else %}
+                        <li><a href="{{ path('login') }}">Log In</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
