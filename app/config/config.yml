@@ -79,6 +79,11 @@ sonata_admin:
                 label: Blog Post
                 items:
                     - app.admin.blog_post
+            security:
+                label: Security
+                items:
+                    - app.admin.user
+                    - app.admin.role
 
 # Sonata Block Configuration
 sonata_block:
