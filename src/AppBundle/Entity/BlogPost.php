@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,11 +38,17 @@ class BlogPost
      */
     private $publishDate;
 
-    public function __construct($title = null, $content = null, \DateTime $publishDate = null)
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     */
+     private $author;
+
+    public function __construct($title = null, $content = null, \DateTime $publishDate = null, $author = null)
     {
         $this->title = $title;
         $this->content = $content;
         $this->publishDate = $publishDate;
+        $this->author = $author;
     }
 
     /**
@@ -122,4 +129,15 @@ class BlogPost
     {
         return $this->publishDate;
     }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
 }

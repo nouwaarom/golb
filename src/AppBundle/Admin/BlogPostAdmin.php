@@ -18,14 +18,19 @@ class BlogPostAdmin extends Admin
             ->add('title')
             ->add('content')
             ->add('publishDate')
+            ->add('author', 'sonata_type_model', array(
+                'class'=> 'AppBundle\Entity\User',
+                'property' => 'name'
+            ))
         ;
     }
 
     protected function configureListFields(ListMapper $mapper)
     {
-        $configureFormFieldsmapper
+        $mapper
             ->addIdentifier('title')
             ->add('publishDate')
+            ->add('author')
         ;
     }
 

@@ -21,3 +21,9 @@ services:
         class: AppBundle\Twig\BlogPostExtension
         tags:
             - { name: twig.extension }
+
+    security.access.blogpost_voter:
+        class: AppBundle\Security\Authorization\Voter\BlogPostVoter
+        public: false
+        tags:
+            - { name: security.voter }

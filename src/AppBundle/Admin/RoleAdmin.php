@@ -23,4 +23,12 @@ class RoleAdmin extends Admin
     {
         $mapper->add('name');
     }
+
+
+    public function toString($object)
+    {
+        return $object instanceof Role
+            ? $object->getName()
+            : 'New Role';
+    }
 }

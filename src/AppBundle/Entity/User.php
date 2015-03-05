@@ -39,10 +39,15 @@ class User implements UserInterface, \Serializable
      */
     private $roles; 
 
+    /**
+     * @ORM\OneToMany(targetEntity="BlogPost", mappedBy="author")
+     */
+    private $articles;
 
     public function __construct()
     {
         $this->roles = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
    //serializable 
@@ -113,6 +118,11 @@ class User implements UserInterface, \Serializable
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    public function getArticles()
+    {
+        return $this->articles->toArray();
     }
 
     public function eraseCredentials()

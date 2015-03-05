@@ -20,7 +20,7 @@ class CreateAdmin implements FixtureInterface
         $role->setName('SONATA_ADMIN');
         $role->setRole('ROLE_SONATA_ADMIN');
 
-        $admin->setRoles(array($role));
+        $admin->addRole($role);
         
         $em->persist($role);
         $em->persist($admin);

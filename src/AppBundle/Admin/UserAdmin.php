@@ -16,14 +16,17 @@ class UserAdmin extends Admin
             ->add('name')
             ->add('email')
             ->add('password', 'password')
-            ->add('roles', 'sonata_type_model_list', array(
+            ->add('roles', 'sonata_type_model', array(
                 'class' => 'AppBundle\Entity\Role',
                 'property_path' => 'name' 
             ))
         ;
     }
 
-    
-
-
+    public function toString($object)
+    {
+        return $object instanceof User
+        ? $object->getName()
+        : 'New User';
+    }
 }
