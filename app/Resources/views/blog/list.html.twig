@@ -12,7 +12,7 @@
 
             <a href="{{ path('show_blog_post', {id: post.id, slug: post.title|slugify}) }}">Read more</a>
             {% if app.user and is_granted('edit', post) %}
-                <a href="{{path('edit_blog_post', {id: post.id, slug: post.title|slugify}) }}">Edit post</a>
+                <a href="{{ path('edit_blog_post', {id: post.id, slug: post.title|slugify}) }}">Edit post</a>
             {% endif %}
         </article>
     {% endfor %}

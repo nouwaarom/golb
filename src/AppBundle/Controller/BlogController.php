@@ -69,10 +69,10 @@ class BlogController extends Controller
      }
 
     /**
-     * @Route("/edit", name="edit_blog_post")
+     * @Route("/edit/{id}/{slug}", name="edit_blog_post")
      * @Security("is_granted('edit', blogpost)")
      */
-     public function editAction(Request $request, BlogPost $blogpost)
+     public function editAction(BlogPost $blogpost, Request $request)
      {
         $form = $this->CreateFormBuilder($blogpost)
             ->add('title', 'text')
@@ -86,7 +86,7 @@ class BlogController extends Controller
         {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($post);
+            $em->persist($blogpost);
             $em->flush();
 
             return $this->redirect($this->generateUrl('homepage'));
