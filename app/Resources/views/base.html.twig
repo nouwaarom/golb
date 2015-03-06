@@ -7,6 +7,8 @@
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/gidole-regular" rel="stylesheet" type="text/css"/>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -14,6 +16,7 @@
     <body>
         <header class=page__header>
             <div class="container  clearfix">
+                <img class=site__icon src={{ asset('img/home-turtle.png') }}>
                 <h1 class=site__title>Elbert's Place!</h1>
 
                 <nav class=page__nav>

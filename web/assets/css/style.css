@@ -1,15 +1,31 @@
+body{
+    font-family: 'GidoleRegular';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 22px;
+
+    margin-bottom: 150px;
+}
+
 .page__header{
-    height:140px;
-    background:#555;
-    border-bottom:3px solid #3c3;
+    height:100px;
+    background:#00AA72;
+    border-bottom:2px solid #FF9900;
     box-shadow:0px 0px 2px #2d2d2d;
 
     color:#fefefe;
+    margin-bottom: 80px;
 }
-    /*.page__header*/ .site__title{
+    .site__title{
         float:left;
-        line-height:140px;
+        line-height:100px;
         margin:0;
+    }
+
+    .site__icon{
+        float: left;
+        height: 120px;
+        margin-top:20px;
     }
 
 .page__nav{
@@ -24,5 +40,28 @@
     .page__nav a{
         color:#fff;
         font-size:1.7em;
-        line-height:140px;
+        line-height:100px;
+    }
+
+h1{
+    margin-top: 40px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+time{
+    font-size: 18px;
+}
+
+a.list-link{
+    color: #9E0025;
+}
+    a.list-link:hover{
+        color: #EA0037;
+        text-decoration: none;
+    }
+    a.list-link:active{
+        color: #F56E8D;
+    }
+    a.list-link:visited{
+        color: #B42A4A;
     }
