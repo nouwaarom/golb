@@ -9,4 +9,14 @@
         {{ post.content|raw }}
     </article>
 
+    <h3>Comments:</h3>
+    <a href="{{ path('new_comment', {id: post.id}) }}">Add Comment</a>
+    {% for comment in comments %}
+        <article class=col-md-6>
+            <span>{{ comment.author.name }}</span>
+            <time>{{ comment.publishDate|date('d-m-y') }}</time>
+            <p>{{ comment.content }}</p>
+        </article
+    {% endfor %}
+
 {% endblock %}

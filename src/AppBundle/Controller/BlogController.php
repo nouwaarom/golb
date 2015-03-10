@@ -23,13 +23,24 @@ class BlogController extends Controller
     }
 
     /**
-     * @Route("/post/{id}/{slug}", name="show_blog_post")
+     * @Route("/post/{id}", name="show_blog_post")
      * @Security("is_granted('view', blogpost)")
      */
     public function showAction(BlogPost $blogpost)
     {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT c
+            FROM AppBundle:Comment c
+            WHERE c.reactionTo = :post
+            ORDER BY c.publishDate DESC'
+        )->setParameter('post', $blogpost);
+
+        $comments = $query->getResult();
+
         return $this->render('blog/single.html.twig', array(
             'post' => $blogpost,
+            'comments' => $comments,
         ));
     }
 
@@ -42,9 +53,23 @@ class BlogController extends Controller
         $post->setPublishDate(new \DateTime('now'));
 
         $form = $this->CreateFormBuilder($post)
-            ->add('title', 'text')
-            ->add('content', 'textarea')
-            ->add('save', 'submit', array('label' => 'Post'))
+            ->add('title', 'text', array(
+                'label' => false,
+                'attr' => array(
+                    'class' => 'new-post-form',
+                    'placeholder' => 'Title',
+                )
+            ))
+            ->add('content', 'textarea', array(
+                'label' => false,
+                'attr' => array(
+                    'class' => 'new-post-form',
+                    'placeholder'=> 'Story',
+                )
+            ))
+            ->add('save', 'submit', array(
+                'label' => 'Post',
+            ))
             ->getForm();
 
         $form->handleRequest($request);
@@ -69,7 +94,7 @@ class BlogController extends Controller
      }
 
     /**
-     * @Route("/edit/{id}/{slug}", name="edit_blog_post")
+     * @Route("/edit/{id}", name="edit_blog_post")
      * @Security("is_granted('edit', blogpost)")
      */
      public function editAction(BlogPost $blogpost, Request $request)

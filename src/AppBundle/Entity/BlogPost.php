@@ -39,9 +39,14 @@ class BlogPost
     private $publishDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="User")
      */
-     private $author;
+    private $author;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="toPost")
+     */
+    private $comments;
 
     public function __construct($title = null, $content = null, \DateTime $publishDate = null, $author = null)
     {
@@ -49,6 +54,8 @@ class BlogPost
         $this->content = $content;
         $this->publishDate = $publishDate;
         $this->author = $author;
+
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -140,4 +147,8 @@ class BlogPost
         $this->author = $author;
     }
 
+    public function getComments()
+    {
+        return $this->comments->toArray();
+    }
 }

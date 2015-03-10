@@ -24,8 +24,8 @@ body{
 
     .site__icon{
         float: left;
-        height: 120px;
-        margin-top:20px;
+        height: 140px;
+        margin-left: 80px;
     }
 
 .page__nav{
@@ -65,3 +65,30 @@ a.list-link{
     a.list-link:visited{
         color: #B42A4A;
     }
+
+form.login{
+    margin-top: 150px;
+    margin-left: 10%;
+}
+    label.login{
+        display: block;
+        font-size:18px;
+        margin-top:20px;
+    }
+    button.login{
+        display: block;
+        margin-top: 20px;
+    }
+  
+/* textarea from symfony form */   
+.new-post-form{
+    padding-left: 20px;
+}
+
+textarea{
+    width: 80%;
+    height: 300px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
